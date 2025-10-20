@@ -28,3 +28,17 @@ db.connect((err) => {
     }
     console.log('Connection Succesfully!');
 });
+
+//Buat Method GET dan POST
+
+//GET
+app.get('api/users', (req, res) => {
+    db.query('SELECT * FROM mahasiswa', (err, results) => {
+        if (err) {
+            consoler.error('Error executing query:0', err.stack);
+            res.status(500).send('Error Fethcing users')
+            return;
+        }
+        res.json(results);
+    });
+});
